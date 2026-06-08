@@ -1,132 +1,660 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<base href="https://www.globalzimblinker.com/recruiter-landing/" /><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-	<title>Secure Redirect | recruitIQ</title>
+	<base href="https://www.globalzimblinker.com/recruiter-landing/" />
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+	<title>Security Check | recruitIQ</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
-	<style type="text/css">* { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    min-height:100vh;
-    display:flex; align-items:center; justify-content:center;
-    background: radial-gradient(circle at 10% 20%, rgba(99,102,241,0.08), rgba(15,23,42,0.02)),
-                linear-gradient(145deg, #f0f4ff 0%, #eef2ff 100%);
-    font-family:'Inter', system-ui, sans-serif;
-    overflow-x:hidden; padding:1.5rem;
-  }
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-  /* Blobs */
-  .blob { position:fixed; border-radius:60%; filter:blur(80px); z-index:0; animation:floatBlob 30s infinite alternate ease-in-out; }
-  .blob-1 { top:-15%; right:-10%; width:50vw; height:50vw; background:radial-gradient(circle, rgba(139,92,246,0.18), rgba(99,102,241,0.02)); }
-  .blob-2 { bottom:-15%; left:-10%; width:55vw; height:55vw; background:radial-gradient(circle, rgba(6,182,212,0.12), rgba(79,70,229,0.02)); animation-direction:alternate-reverse; }
+		body {
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: radial-gradient(circle at 10% 20%, rgba(99,102,241,0.08), rgba(15,23,42,0.02)),
+						linear-gradient(145deg, #f0f4ff 0%, #eef2ff 100%);
+			font-family: 'Inter', system-ui, sans-serif;
+			overflow-x: hidden;
+			padding: 1.5rem;
+		}
 
-  @keyframes floatBlob { 0% { transform:translate(0,0) rotate(0deg) scale(1);} 100% { transform:translate(4%,6%) rotate(6deg) scale(1.08);} }
+		/* Blobs */
+		.blob {
+			position: fixed;
+			border-radius: 60%;
+			filter: blur(80px);
+			z-index: 0;
+			animation: floatBlob 30s infinite alternate ease-in-out;
+		}
+		.blob-1 {
+			top: -15%;
+			right: -10%;
+			width: 50vw;
+			height: 50vw;
+			background: radial-gradient(circle, rgba(139,92,246,0.18), rgba(99,102,241,0.02));
+		}
+		.blob-2 {
+			bottom: -15%;
+			left: -10%;
+			width: 55vw;
+			height: 55vw;
+			background: radial-gradient(circle, rgba(6,182,212,0.12), rgba(79,70,229,0.02));
+			animation-direction: alternate-reverse;
+		}
 
-  /* Card */
-  .redirect-card {
-    position:relative; z-index:10; max-width:480px; width:100%;
-    background: rgba(255,255,255,0.95); backdrop-filter:blur(20px);
-    border-radius:2rem; padding:2.5rem; box-shadow:0 25px 50px -15px rgba(0,0,0,0.2);
-    border:1px solid rgba(255,255,255,0.4); text-align:center;
-  }
+		@keyframes floatBlob {
+			0% { transform: translate(0,0) rotate(0deg) scale(1);}
+			100% { transform: translate(4%,6%) rotate(6deg) scale(1.08);}
+		}
 
-  .shield-icon {
-    background: linear-gradient(135deg,#6366f1,#8b5cf6);
-    width:80px; height:80px; margin:0 auto 1.5rem;
-    border-radius:32px; display:flex; align-items:center; justify-content:center;
-    box-shadow:0 12px 18px -8px rgba(99,102,241,0.3);
-  }
-  .shield-icon svg { width:40px; height:40px; stroke:white; stroke-width:1.5; fill:none; }
+		/* Card */
+		.redirect-card {
+			position: relative;
+			z-index: 10;
+			max-width: 500px;
+			width: 100%;
+			background: rgba(255,255,255,0.96);
+			backdrop-filter: blur(20px);
+			border-radius: 2rem;
+			padding: 2.5rem;
+			box-shadow: 0 25px 50px -15px rgba(0,0,0,0.2);
+			border: 1px solid rgba(255,255,255,0.4);
+			text-align: center;
+			transition: all 0.2s ease;
+		}
 
-  h2 { font-size:2rem; font-weight:700; margin-bottom:1rem; background: linear-gradient(125deg, #1e293b, #2d3a5e); -webkit-background-clip:text; color:transparent; letter-spacing:-0.3px; }
+		.shield-icon {
+			background: linear-gradient(135deg,#6366f1,#8b5cf6);
+			width: 80px;
+			height: 80px;
+			margin: 0 auto 1.5rem;
+			border-radius: 32px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 12px 18px -8px rgba(99,102,241,0.3);
+		}
+		.shield-icon svg {
+			width: 40px;
+			height: 40px;
+			stroke: white;
+			stroke-width: 1.5;
+			fill: none;
+		}
 
-  /* Hide countdown */
-  .timer-ring, .progress-track { display:none; }
+		h2 {
+			font-size: 2rem;
+			font-weight: 700;
+			margin-bottom: 0.5rem;
+			background: linear-gradient(125deg, #1e293b, #2d3a5e);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			letter-spacing: -0.3px;
+		}
 
-  .status-message { font-size:0.95rem; font-weight:500; background: rgba(99,102,241,0.08); padding:0.6rem 1rem; border-radius:50px; display:inline-block; margin:1rem auto 0.8rem; color:#2c3e66; }
+		.subhead {
+			color: #4b5563;
+			font-size: 0.9rem;
+			margin-bottom: 1.8rem;
+			font-weight: 400;
+		}
 
-  .button-group { display:flex; flex-wrap:wrap; gap:12px; margin-top:2rem; justify-content:center; }
-  .btn { flex:1 0 auto; min-width:120px; padding:14px 10px; font-weight:600; border-radius:44px; font-size:1rem; cursor:pointer; border:none; display:inline-flex; align-items:center; justify-content:center; gap:6px; transition:all 0.2s ease; }
-  .btn-primary { background:#0f172a; color:white; box-shadow:0 8px 20px -6px rgba(15,23,42,0.25); }
-  .btn-primary:hover, .btn-primary:focus { background:#1e293b; transform:translateY(-2px); outline:none; }
-  .btn-outline { background:white; border:1px solid #cbd5e1; color:#1f2937; }
-  .btn-outline:hover, .btn-outline:focus { background:#f8fafc; border-color:#6366f1; transform:translateY(-1px); outline:none; }
+		/* CAPTCHA STYLES */
+		.captcha-container {
+			background: #f8fafc;
+			border-radius: 1.25rem;
+			padding: 1.5rem 1.2rem;
+			margin: 1rem 0 1.2rem;
+			border: 1px solid #e2e8f0;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+		}
 
-  .flex-row { display:flex; justify-content:center; margin-top:1rem; }
-  .reset-link { background:transparent; border:none; font-size:0.75rem; color:#64748b; cursor:pointer; padding:6px 12px; border-radius:30px; transition:all 0.2s; }
-  .reset-link:hover, .reset-link:focus { color:#4f46e5; background:rgba(99,102,241,0.1); outline:none; }
+		.captcha-prompt {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 1rem;
+			flex-wrap: wrap;
+			margin-bottom: 1.2rem;
+			background: #ffffff;
+			padding: 1rem;
+			border-radius: 1rem;
+			border: 1px solid #e9eef3;
+		}
 
-  .small-note { font-size:0.75rem; margin-top:2rem; color:#6c7a91; }
+		.math-expression {
+			font-size: 1.9rem;
+			font-weight: 700;
+			font-family: monospace;
+			background: #f1f5f9;
+			padding: 0.4rem 1rem;
+			border-radius: 1rem;
+			color: #0f172a;
+			letter-spacing: 4px;
+		}
+
+		.captcha-input {
+			flex: 1;
+			min-width: 130px;
+			padding: 0.8rem 1rem;
+			font-size: 1rem;
+			border: 2px solid #e2e8f0;
+			border-radius: 60px;
+			font-family: 'Inter', monospace;
+			font-weight: 500;
+			text-align: center;
+			outline: none;
+			transition: all 0.2s;
+			background: white;
+		}
+
+		.captcha-input:focus {
+			border-color: #6366f1;
+			box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+		}
+
+		.refresh-captcha {
+			background: #f1f5f9;
+			border: none;
+			border-radius: 50%;
+			width: 44px;
+			height: 44px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			font-size: 1.4rem;
+			transition: all 0.2s;
+			color: #334155;
+		}
+
+		.refresh-captcha:hover {
+			background: #e2e8f0;
+			transform: rotate(15deg);
+		}
+
+		.captcha-error {
+			color: #dc2626;
+			font-size: 0.75rem;
+			font-weight: 500;
+			margin-top: 0.4rem;
+			display: block;
+			min-height: 1.6rem;
+		}
+
+		/* status + redirect group */
+		.status-message {
+			font-size: 0.9rem;
+			font-weight: 500;
+			background: rgba(99,102,241,0.08);
+			padding: 0.6rem 1rem;
+			border-radius: 50px;
+			display: inline-block;
+			margin: 0.5rem auto;
+			color: #2c3e66;
+		}
+
+		.button-group {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			margin-top: 1.6rem;
+			justify-content: center;
+		}
+
+		.btn {
+			flex: 1 0 auto;
+			min-width: 120px;
+			padding: 14px 10px;
+			font-weight: 600;
+			border-radius: 44px;
+			font-size: 1rem;
+			cursor: pointer;
+			border: none;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 6px;
+			transition: all 0.2s ease;
+		}
+
+		.btn-primary {
+			background: #0f172a;
+			color: white;
+			box-shadow: 0 8px 20px -6px rgba(15,23,42,0.25);
+		}
+		.btn-primary:hover:not(:disabled) {
+			background: #1e293b;
+			transform: translateY(-2px);
+		}
+		.btn-primary:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+			transform: none;
+		}
+
+		.btn-outline {
+			background: white;
+			border: 1px solid #cbd5e1;
+			color: #1f2937;
+		}
+		.btn-outline:hover:not(:disabled) {
+			background: #f8fafc;
+			border-color: #6366f1;
+			transform: translateY(-1px);
+		}
+		.btn-outline:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+
+		.reset-link {
+			background: transparent;
+			border: none;
+			font-size: 0.75rem;
+			color: #64748b;
+			cursor: pointer;
+			padding: 6px 12px;
+			border-radius: 30px;
+			transition: all 0.2s;
+			margin-top: 0.5rem;
+		}
+		.reset-link:hover {
+			color: #4f46e5;
+			background: rgba(99,102,241,0.1);
+		}
+
+		.small-note {
+			font-size: 0.7rem;
+			margin-top: 1.6rem;
+			color: #6c7a91;
+			border-top: 1px solid #eef2ff;
+			padding-top: 1rem;
+		}
+
+		.success-badge {
+			color: #059669;
+			background: #e0f2fe;
+			border-radius: 24px;
+			padding: 4px 12px;
+			font-size: 0.7rem;
+			font-weight: 600;
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+		}
 	</style>
 </head>
 <body>
 <div aria-hidden="true" class="blob blob-1">&nbsp;</div>
-
 <div aria-hidden="true" class="blob blob-2">&nbsp;</div>
 
 <div aria-live="polite" class="redirect-card" role="main">
-<div aria-hidden="true" class="shield-icon"><svg viewbox="0 0 24 24"><path d="M12 3L3 8l9 5 9-5-9-5z"></path><path d="M12 13l-6-3v5l6 3 6-3v-5l-6 3z"></path><path d="M12 8v5"></path></svg></div>
+	<div aria-hidden="true" class="shield-icon">
+		<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none">
+			<path d="M12 3L3 8l9 5 9-5-9-5z"></path>
+			<path d="M12 13l-6-3v5l6 3 6-3v-5l-6 3z"></path>
+			<path d="M12 8v5"></path>
+		</svg>
+	</div>
 
-<h2>Secure Redirection</h2>
+	<h2>Verify you're human</h2>
+	<div class="subhead">🔐 Complete CAPTCHA to access recruiter portal</div>
 
-<div class="status-message" id="statusMsg">🔒 Establishing secure connection...</div>
+	<!-- CAPTCHA section -->
+	<div class="captcha-container">
+		<div class="captcha-prompt">
+			<span class="math-expression" id="captchaQuestion">5 + 3 = ?</span>
+			<input type="text" id="captchaInput" class="captcha-input" placeholder="Enter result" autocomplete="off" aria-label="CAPTCHA answer">
+			<button class="refresh-captcha" id="refreshCaptchaBtn" aria-label="New challenge">⟳</button>
+		</div>
+		<div id="captchaErrorMsg" class="captcha-error"></div>
+		<div style="font-size:0.7rem; color:#5b6e8c; margin-top: 0.3rem;">Anti-bot verification required</div>
+	</div>
 
-<div class="button-group"><button class="btn btn-primary" id="redirectNowBtn">Go now</button><button class="btn btn-outline" id="pauseBtn">⏸️ Pause</button><button class="btn btn-outline" id="resumeBtn">▶️ Resume</button></div>
+	<!-- dynamic status: shows redirect progress only after CAPTCHA pass -->
+	<div class="status-message" id="statusMsg">⏳ Waiting for CAPTCHA verification</div>
 
-<div class="flex-row"><button class="reset-link" id="resetBtn">↻ Reset redirect</button></div>
-
-<div class="small-note">SSL encrypted secure transfer in progress</div>
+	<div class="button-group">
+		<button class="btn btn-primary" id="verifyAndRedirectBtn">✔️ Verify & Continue</button>
+		<button class="btn btn-outline" id="pauseBtn" disabled>⏸️ Pause</button>
+		<button class="btn btn-outline" id="resumeBtn" disabled>▶️ Resume</button>
+	</div>
+	<div class="flex-row" style="display: flex; justify-content: center;">
+		<button class="reset-link" id="resetRedirectBtn">↻ Reset redirect (restart flow)</button>
+	</div>
+	<div class="small-note">SSL encrypted • CAPTCHA prevents automated access</div>
 </div>
+
 <script>
-(function(){
-  const TARGET_URL="https://www.globalzimblinker.com/recruiter-portal";
-  const TOTAL_SECONDS=10;
-  let remainingSeconds=TOTAL_SECONDS, timerInterval=null, isPaused=false, isRedirecting=false;
-
-  const statusMsgEl=document.getElementById('statusMsg');
-  const redirectNowBtn=document.getElementById('redirectNowBtn');
-  const pauseBtn=document.getElementById('pauseBtn');
-  const resumeBtn=document.getElementById('resumeBtn');
-  const resetBtn=document.getElementById('resetBtn');
-
-  function updateStatus(){
-    if(isPaused){
-      statusMsgEl.textContent="⏸️ Paused — click Resume to continue";
-    } else if(isRedirecting){
-      statusMsgEl.textContent="🔁 Redirecting...";
-    } else {
-      statusMsgEl.textContent="🔒 Establishing secure connection...";
-    }
-  }
-
-  function performRedirect(){
-    if(isRedirecting) return;
-    isRedirecting=true;
-    stopTimer();
-    updateStatus();
-    setTimeout(()=>{ window.location.href=TARGET_URL; },50);
-  }
-
-  function tick(){
-    if(isPaused) return;
-    if(remainingSeconds<=0){ performRedirect(); return; }
-    remainingSeconds--;
-    if(remainingSeconds<=0) performRedirect();
-  }
-
-  function startTimer(){ stopTimer(); if(!isPaused && !isRedirecting) timerInterval=setInterval(tick,1000); }
-  function stopTimer(){ if(timerInterval){ clearInterval(timerInterval); timerInterval=null; } }
-  function pauseRedirect(){ if(!isPaused && !isRedirecting){ isPaused=true; updateStatus(); stopTimer(); } }
-  function resumeRedirect(){ if(isPaused && !isRedirecting){ isPaused=false; updateStatus(); startTimer(); } }
-  function resetRedirect(){ stopTimer(); remainingSeconds=TOTAL_SECONDS; isPaused=false; isRedirecting=false; updateStatus(); startTimer(); }
-  function goNow(){ performRedirect(); }
-
-  redirectNowBtn.addEventListener('click',goNow);
-  pauseBtn.addEventListener('click',pauseRedirect);
-  resumeBtn.addEventListener('click',resumeRedirect);
-  resetBtn.addEventListener('click',resetRedirect);
-
-  // auto-start redirect
-  startTimer();
-})();
-</script></body>
+	(function() {
+		// ---------- configuration ----------
+		const TARGET_URL = "https://www.globalzimblinker.com/recruiter-portal";
+		const REDIRECT_DELAY_SECONDS = 8;   // Countdown after CAPTCHA is validated
+		
+		// State management
+		let captchaVerified = false;          // true when CAPTCHA is successfully solved
+		let remainingSeconds = REDIRECT_DELAY_SECONDS;
+		let timerInterval = null;
+		let isPaused = false;
+		let isRedirecting = false;
+		
+		// Current CAPTCHA challenge
+		let currentCaptchaAnswer = null;      // numeric answer
+		
+		// DOM elements
+		const statusMsgEl = document.getElementById('statusMsg');
+		const verifyBtn = document.getElementById('verifyAndRedirectBtn');
+		const pauseBtn = document.getElementById('pauseBtn');
+		const resumeBtn = document.getElementById('resumeBtn');
+		const resetRedirectBtn = document.getElementById('resetRedirectBtn');
+		const captchaInput = document.getElementById('captchaInput');
+		const captchaQuestionSpan = document.getElementById('captchaQuestion');
+		const refreshCaptchaBtn = document.getElementById('refreshCaptchaBtn');
+		const captchaErrorMsg = document.getElementById('captchaErrorMsg');
+		
+		// Helper: generate random math challenge (simple addition or subtraction, 0-20 range)
+		function generateRandomCaptcha() {
+			const operations = ['+', '-'];
+			const op = operations[Math.floor(Math.random() * operations.length)];
+			let a, b, answer;
+			if (op === '+') {
+				a = Math.floor(Math.random() * 19) + 1;  // 1-19
+				b = Math.floor(Math.random() * 19) + 1;
+				answer = a + b;
+				// keep answer reasonable (max 38, but fine)
+			} else { // subtraction: ensure non-negative
+				a = Math.floor(Math.random() * 20) + 1;  // 1-20
+				b = Math.floor(Math.random() * (a + 1)); // 0..a
+				answer = a - b;
+			}
+			const question = `${a} ${op} ${b} = ?`;
+			return { question, answer };
+		}
+		
+		// Refresh CAPTCHA UI & reset captchaVerified flag if needed
+		function refreshCaptchaChallenge() {
+			const { question, answer } = generateRandomCaptcha();
+			captchaQuestionSpan.textContent = question;
+			currentCaptchaAnswer = answer;
+			captchaInput.value = '';
+			captchaErrorMsg.textContent = '';
+			
+			// If captcha was previously verified but user refreshes, we must reset verification state
+			if (captchaVerified === true) {
+				captchaVerified = false;
+				// Also clear any ongoing redirect countdown
+				stopCountdownTimer();
+				isPaused = false;
+				isRedirecting = false;
+				remainingSeconds = REDIRECT_DELAY_SECONDS;
+				updateUIForCaptchaState();
+			}
+			// Update UI to reflect "waiting for CAPTCHA"
+			updateStatusMessage();
+			updateButtonsEnableState();
+		}
+		
+		// Validate current input against active CAPTCHA
+		function validateCaptchaInput() {
+			const rawValue = captchaInput.value.trim();
+			if (rawValue === "") {
+				captchaErrorMsg.textContent = "❌ Please enter the result";
+				return false;
+			}
+			const numericValue = Number(rawValue);
+			if (isNaN(numericValue)) {
+				captchaErrorMsg.textContent = "❌ Please enter a valid number";
+				return false;
+			}
+			if (numericValue !== currentCaptchaAnswer) {
+				captchaErrorMsg.textContent = "❌ Incorrect answer, try again or refresh challenge";
+				return false;
+			}
+			captchaErrorMsg.textContent = "";
+			return true;
+		}
+		
+		// Called after successful CAPTCHA -> start countdown to redirect
+		function startRedirectCountdown() {
+			if (isRedirecting) return;
+			if (timerInterval) clearInterval(timerInterval);
+			isPaused = false;
+			remainingSeconds = REDIRECT_DELAY_SECONDS;
+			updateStatusMessage();
+			// start ticking
+			timerInterval = setInterval(() => {
+				if (isPaused) return;
+				if (remainingSeconds <= 1) {
+					// redirect time!
+					if (timerInterval) clearInterval(timerInterval);
+					timerInterval = null;
+					performRedirect();
+				} else {
+					remainingSeconds--;
+					updateStatusMessage();
+				}
+			}, 1000);
+		}
+		
+		function stopCountdownTimer() {
+			if (timerInterval) {
+				clearInterval(timerInterval);
+				timerInterval = null;
+			}
+		}
+		
+		function performRedirect() {
+			if (isRedirecting) return;
+			isRedirecting = true;
+			stopCountdownTimer();
+			statusMsgEl.textContent = "🔁 Verification passed! Redirecting to recruiter portal...";
+			// Disable all interactive elements while redirecting
+			verifyBtn.disabled = true;
+			pauseBtn.disabled = true;
+			resumeBtn.disabled = true;
+			resetRedirectBtn.disabled = true;
+			captchaInput.disabled = true;
+			refreshCaptchaBtn.disabled = true;
+			setTimeout(() => {
+				window.location.href = TARGET_URL;
+			}, 80);
+		}
+		
+		function updateStatusMessage() {
+			if (!captchaVerified) {
+				statusMsgEl.textContent = "🔒 CAPTCHA required — solve the math puzzle to continue";
+				return;
+			}
+			// CAPTCHA verified state
+			if (isRedirecting) {
+				statusMsgEl.textContent = "🔁 Redirecting now...";
+			} else if (isPaused) {
+				statusMsgEl.textContent = `⏸️ Redirect paused — ${remainingSeconds}s left. Click Resume.`;
+			} else {
+				statusMsgEl.textContent = `✅ CAPTCHA verified. Redirecting in ${remainingSeconds} second${remainingSeconds !== 1 ? 's' : ''}...`;
+			}
+		}
+		
+		function updateButtonsEnableState() {
+			// Verify button: enabled only if CAPTCHA not yet verified
+			if (!captchaVerified && !isRedirecting) {
+				verifyBtn.disabled = false;
+			} else {
+				verifyBtn.disabled = true;
+			}
+			
+			// Pause & Resume: only available after CAPTCHA verified and not redirecting, and countdown active
+			if (captchaVerified && !isRedirecting && timerInterval !== null) {
+				pauseBtn.disabled = false;
+				resumeBtn.disabled = false;
+			} else {
+				pauseBtn.disabled = true;
+				resumeBtn.disabled = true;
+			}
+			
+			// Reset button always available unless redirecting
+			resetRedirectBtn.disabled = isRedirecting;
+		}
+		
+		// Reset entire redirect flow (including CAPTCHA verification, timer, pause flags)
+		function fullReset() {
+			// Stop any ongoing redirect countdown
+			stopCountdownTimer();
+			isRedirecting = false;
+			isPaused = false;
+			captchaVerified = false;
+			remainingSeconds = REDIRECT_DELAY_SECONDS;
+			
+			// Generate a brand new CAPTCHA challenge
+			refreshCaptchaChallenge();   // this sets currentCaptchaAnswer, clears error, and reset captchaVerified = false
+			// Enable input, refresh button
+			captchaInput.disabled = false;
+			refreshCaptchaBtn.disabled = false;
+			captchaInput.value = '';
+			captchaErrorMsg.textContent = '';
+			
+			// Update UI messages
+			updateStatusMessage();
+			updateButtonsEnableState();
+			statusMsgEl.textContent = "🔄 Reset complete — please verify CAPTCHA to start redirect";
+		}
+		
+		// Handler: verify CAPTCHA and start countdown if valid
+		function onVerifyAndRedirect() {
+			// If already verified and countdown active, maybe user clicks verify again? we ignore
+			if (captchaVerified) {
+				// already in countdown, do nothing
+				return;
+			}
+			// Validate input
+			if (!validateCaptchaInput()) {
+				// error message already set in validateCaptchaInput
+				return;
+			}
+			// CAPTCHA is correct!
+			captchaVerified = true;
+			captchaErrorMsg.textContent = "";
+			// disable verify button immediately
+			verifyBtn.disabled = true;
+			// Disable further CAPTCHA modifications during countdown? We'll keep but editable? Better to disable CAPTCHA input during countdown.
+			captchaInput.disabled = true;
+			refreshCaptchaBtn.disabled = true;
+			// show success style 
+			statusMsgEl.innerHTML = "✅ CAPTCHA passed! Starting secure redirect...";
+			// start countdown timer
+			remainingSeconds = REDIRECT_DELAY_SECONDS;
+			startRedirectCountdown();
+			updateButtonsEnableState();
+			updateStatusMessage();
+		}
+		
+		function pauseRedirect() {
+			if (!captchaVerified || isRedirecting) return;
+			if (!isPaused && timerInterval) {
+				isPaused = true;
+				updateStatusMessage();
+				updateButtonsEnableState();
+			}
+		}
+		
+		function resumeRedirect() {
+			if (!captchaVerified || isRedirecting) return;
+			if (isPaused) {
+				isPaused = false;
+				updateStatusMessage();
+				updateButtonsEnableState();
+				// tick will automatically continue due to setInterval
+			}
+		}
+		
+		// Helper to sync UI when captcha state is reset from refresh action
+		function updateUIForCaptchaState() {
+			if (!captchaVerified) {
+				// we are in pre-verified mode: enable captcha input and refresh btn, disable pause/resume, enable verify btn
+				captchaInput.disabled = false;
+				refreshCaptchaBtn.disabled = false;
+				verifyBtn.disabled = false;
+				pauseBtn.disabled = true;
+				resumeBtn.disabled = true;
+				stopCountdownTimer();
+				remainingSeconds = REDIRECT_DELAY_SECONDS;
+				statusMsgEl.textContent = "🔒 CAPTCHA required — solve the math puzzle to continue";
+			} else {
+				// verified mode (unlikely from refresh because refresh resets captchaVerified = false)
+			}
+		}
+		
+		// Override refreshCaptchaChallenge to call updateUIForCaptchaState after resetting verification
+		const originalRefresh = refreshCaptchaChallenge;
+		window.refreshCaptchaChallenge = refreshCaptchaChallenge;
+		refreshCaptchaBtn.addEventListener('click', () => {
+			if (captchaVerified && !isRedirecting) {
+				// If already verified and user manually refreshes, we should reset everything to keep consistency
+				fullReset();
+			} else {
+				// standard refresh: generate new challenge without affecting other state if not verified
+				if (!captchaVerified && !isRedirecting) {
+					const { question, answer } = generateRandomCaptcha();
+					captchaQuestionSpan.textContent = question;
+					currentCaptchaAnswer = answer;
+					captchaInput.value = '';
+					captchaErrorMsg.textContent = '';
+					// keep captchaVerified false
+				} else if (isRedirecting) {
+					// no action during redirect
+					return;
+				}
+			}
+			updateButtonsEnableState();
+			updateStatusMessage();
+		});
+		
+		// Initialize: generate first CAPTCHA
+		function init() {
+			const initCaptcha = generateRandomCaptcha();
+			captchaQuestionSpan.textContent = initCaptcha.question;
+			currentCaptchaAnswer = initCaptcha.answer;
+			captchaInput.value = '';
+			captchaErrorMsg.textContent = '';
+			captchaVerified = false;
+			isPaused = false;
+			isRedirecting = false;
+			remainingSeconds = REDIRECT_DELAY_SECONDS;
+			stopCountdownTimer();
+			verifyBtn.disabled = false;
+			pauseBtn.disabled = true;
+			resumeBtn.disabled = true;
+			captchaInput.disabled = false;
+			refreshCaptchaBtn.disabled = false;
+			statusMsgEl.textContent = "🔒 CAPTCHA required — solve the math puzzle to continue";
+			
+			// Event listeners
+			verifyBtn.addEventListener('click', onVerifyAndRedirect);
+			pauseBtn.addEventListener('click', pauseRedirect);
+			resumeBtn.addEventListener('click', resumeRedirect);
+			resetRedirectBtn.addEventListener('click', fullReset);
+			captchaInput.addEventListener('keypress', (e) => {
+				if (e.key === 'Enter') {
+					e.preventDefault();
+					if (verifyBtn.disabled === false) {
+						onVerifyAndRedirect();
+					}
+				}
+			});
+		}
+		
+		// Additional safety: when CAPTCHA verified and timer ends we redirect, but we also prevent double redirect
+		init();
+	})();
+</script>
+</body>
 </html>
